@@ -1,5 +1,10 @@
 # Basic_MySQL_Questions
 
+🚀 Elevate Your MySQL Skills with These Essential Practice Questions! 🚀
+
+Ready to sharpen your MySQL expertise? Whether you’re starting out or revisiting core concepts, diving into hands-on practice is crucial for mastering SQL. Check out these fundamental MySQL questions designed to reinforce your knowledge and enhance your skills:
+
+
 Q-1. Write an SQL query to fetch “FIRST_NAME” from the Worker table using the alias name <WORKER_NAME>.
 
 Q-2. Write an SQL query to fetch “FIRST_NAME” from the Worker table in upper case.
