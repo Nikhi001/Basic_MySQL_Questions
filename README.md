@@ -54,3 +54,44 @@ Q-23. Write an SQL query to fetch the no. of workers for each department in desc
 Q-24. Write an SQL query to print details of the Workers who are also Managers.
 
 Q-25. Write an SQL query to fetch duplicate records having matching data in some fields of a table.
+
+Q-26. Write an SQL query to show only odd rows from a table.
+
+Q-27. Write an SQL query to show only even rows from a table.
+
+Q-28. Write an SQL query to clone a new table from another table.
+
+Q-29. Write an SQL query to fetch intersecting records of two tables.
+
+Q-30. Write an SQL query to show records from one table that another table does not have.
+
+Q-31. Write an SQL query to show the current date and time.
+
+Q-32. Write an SQL query to show the top n (say 10) records of a table.
+
+Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table.
+
+Q-34. Write an SQL query to determine the 5th highest salary without using the TOP or limit method.
+
+Q-35. Write an SQL query to fetch the list of employees with the same salary.
+
+Q-36. Write an SQL query to show the second-highest salary from a table.
+
+Q-37. Write an SQL query to show one row twice in the results from a table.
+
+Q-38. Write an SQL query to fetch intersecting records of two tables.
+
+Q-39. Write an SQL query to fetch the first 50% of records from a table.
+
+Q-40. Write an SQL query to fetch the departments that have less than five people in them.
+
+Q-41. Write an SQL query to show all departments along with the number of people in there.
+
+Q-42. Write an SQL query to show the last record from a table.
+
+Q-43. Write an SQL query to fetch the first row of a table.
+
+Q-44. Write an SQL query to fetch the last five records from a table.
+
+Q-45. Write an SQL query to print the name of employees having the highest salary in each department.
+
