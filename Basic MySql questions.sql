@@ -155,3 +155,108 @@ from title
 group by worker_title
  , affected_from
 having count(*)>1;
+
+-- Q-26. Write an SQL query to show only odd rows from a table.--
+select * from worker where mod(worker_ID,2)<>0;	# Comparison Operators: =, <>, != , >, <, >=, <=
+# MOD is a function in MySQL used to find the remainder of one number divided by another. It's essentially the modulus operation.
+
+
+-- Q-27. Write an SQL query to show only even rows from a table. --
+	
+select * from worker where mod(worker_ID,2)=0; # Comparison Operators: =, <>, != , >, <, >=, <=
+
+
+-- Q-28. Write an SQL query to clone a new table from another table. --
+
+Create table new_table Like worker; # First create new table using LIKE function
+
+select * from new_table;
+
+insert into new_table select * from worker; # copy all data into new_table
+
+-- Q-29. Write an SQL query to fetch intersecting records of two tables. --
+
+(select * from worker) INTERSECT (select *from new_table); # INTERSECT operator: The INTERSECT operator is used to compare the results of the two SELECT statements.
+ 
+ # For more info use Gemini
+ 
+ -- Q-30. Write an SQL query to show records from one table that another table does not have. --
+  # Using "NOT IN"
+ select * from worker where worker_id not in (select worker_ref_id from title);
+ 
+ # Using LEFT JOIN
+ 
+ select * from worker  left join title on worker_id = worker_ref_id 
+ where worker_ref_id is null;
+ 
+ -- Q-31. Write an SQL query to show the current date and time. -- 
+ 
+ select curdate();
+ 
+ select now(); # shown time 
+ 
+-- Q-32. Write an SQL query to show the top n (say 10) records of a table.--
+
+# MySQL query to return the top n records using the LIMIT method
+
+select* from worker order by salary desc limit 10; # this is standard way
+
+# SQL Server query to return the top n records using the TOP command:
+ select TOP 10 * from worker order by salary desc; 
+ 
+ -- Q-33. Write an SQL query to determine the nth (say n=5) highest salary from a table. --
+ 
+ # MySQL query to find the nth highest salary:
+ 
+ select salary from worker order by salary limit 3,2;
+ 
+ /* LIMIT number: This form returns the first number rows of the result set.
+LIMIT offset, count: This form returns count rows starting from the offset row. */
+
+-- Q-34. Write an SQL query to determine the 5th highest salary without using the TOP or limit method. --
+select	* from worker;
+
+select salary from worker w1 where 4=(select count(distinct(w2.salary)) 
+from worker w2 where w2.salary >= w1.salary);
+
+-- Q-35. Write an SQL query to fetch the list of employees with the same salary.--
+
+Select distinct w.worker_id ,w.first_name,w.salary
+from worker w ,worker w1 where w.salary = w1.salary and w.worker_id != w1.worker_id;
+
+# distinct is used to return only unique rows based on the specified columns.
+
+
+-- Q-36. Write an SQL query to show the second-highest salary from a table. --
+select max(salary) from worker
+where salary not in (select max(salary) from worker);
+
+-- Q-37. Write an SQL query to show one row twice in the results from a table.--
+select first_name, department from worker w  where w.department ='HR'
+union all
+select first_name,department from worker w1 where w1.department='HR';
+
+-- Q-38. Write an SQL query to fetch intersecting records of two tables. --
+(select * from worker) intersect (select * from new_table);
+
+-- Q-39. Write an SQL query to fetch the first 50% of records from a table.--
+select* from worker where worker_id <= (select count(worker_id)/2 from worker);
+
+-- Q-40. Write an SQL query to fetch the departments that have less than five people in them. --
+select department ,count(worker_id) as 'Number of Workers' from worker group by department having count(worker_id)<5;
+
+-- Q-41. Write an SQL query to show all departments along with the number of people in there.--
+select department, count(department) as 'Number of workers' from worker group by department ;
+
+-- Q-42. Write an SQL query to show the last record from a table.--
+select * from worker where worker_id = (select max(worker_id)from worker);
+
+-- Q-43. Write an SQL query to fetch the first row of a table.--
+select * from worker where worker_id =(select min(worker_id)from worker);
+
+-- Q-44. Write an SQL query to fetch the last five records from a table. --
+select * from worker where worker_id>=5; # union 
+#select * from (select* from worker w order by w.worker_id desc)as w1 where w1.worker_id <=5;
+
+-- Q-45. Write an SQL query to print the name of employees having the highest salary in each department. --
+select t.department.t.First_name,t.salary from(select max(salary) as totalsalary.department from worker group by  department) as tempnew inner join worker.t on the Tempnew.department=t.department and Tempnew.Totalsalary=t.salary;
